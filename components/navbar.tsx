@@ -35,12 +35,13 @@ export const Navbar = () => {
     if (!href) return false;
     // treat root specially
     if (href === "/") return pathname === "/";
+
     return pathname === href || pathname.startsWith(href);
   };
 
   return (
     <HeroUINavbar
-      className="fixed top-0 left-0 w-full z-50 bg-white/50 dark:bg-black/40 backdrop-blur-md shadow-sm hero-navbar-custom border-b border-transparent"
+      className="fixed top-0 left-0 w-full z-50 bg-white/50 dark:bg-white/10 backdrop-blur-md shadow-sm hero-navbar-custom border-b border-transparent"
       maxWidth="xl"
       position="sticky"
     >
@@ -56,35 +57,55 @@ export const Navbar = () => {
                 width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M6 10l6-6 6 6" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.6" />
-                <path d="M6 14l6 6 6-6" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.6" />
+                <path
+                  d="M6 10l6-6 6 6"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.6"
+                />
+                <path
+                  d="M6 14l6 6 6-6"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.6"
+                />
               </svg>
             </div>
-            <p className="font-bold text-inherit text-primary">{siteConfig.name}</p>
+            <p className="font-bold text-inherit text-primary">
+              {siteConfig.name}
+            </p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
 
       {/* Center nav for large screens */}
-      <NavbarContent className="hidden lg:flex basis-auto justify-center" justify="center">
+      <NavbarContent
+        className="hidden lg:flex basis-auto justify-center"
+        justify="center"
+      >
         <ul className="flex gap-6">
           {siteConfig.navItems.map((item) => {
             const active = isActive(item.href);
+
             return (
               <NavbarItem key={item.href} className="list-none">
                 <NextLink
-                  href={item.href}
                   className={clsx(
                     "group px-2 py-1 relative inline-block",
                     linkStyles({ color: active ? "primary" : "foreground" }),
-                    active ? "text-primary font-medium" : "hover:text-primary"
+                    active ? "text-primary font-medium" : "hover:text-primary",
                   )}
+                  href={item.href}
                 >
                   <span className="inline-block">{item.label}</span>
                   <span
                     className={clsx(
                       "absolute left-0 right-0 -bottom-2 h-0.5 bg-gradient-to-r from-primary to-secondary origin-left transition-transform duration-200",
-                      active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      active
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100",
                     )}
                   />
                 </NextLink>
@@ -94,14 +115,20 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
+      <NavbarContent
+        className="hidden sm:flex basis-1/5 sm:basis-full"
+        justify="end"
+      >
         <NavbarItem className="hidden lg:flex gap-3 items-center">
           <div className="flex items-center gap-2">
             <LanguageToggle />
             <ThemeSwitch />
           </div>
 
-          <Button className="rounded-md bg-gradient-to-r from-primary to-secondary text-white shadow-md" size="sm">
+          <Button
+            className="rounded-md bg-gradient-to-r from-primary to-secondary text-white shadow-md"
+            size="sm"
+          >
             Thuê Tôi
           </Button>
         </NavbarItem>
