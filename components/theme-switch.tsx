@@ -30,6 +30,7 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className }) => {
   }
 
   const isDark = theme === "dark";
+  const animationsEnabled = isDark; // only show animations when in dark mode
 
   return (
     <motion.button
@@ -41,22 +42,26 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className }) => {
       whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
-      {/* Background glow */}
-      <motion.div
-        animate={{ opacity: [0.5, 0.85, 0.5] }}
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary blur-md"
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Background glow (animated only in dark mode) */}
+      {animationsEnabled ? (
+        <motion.div
+          animate={{ opacity: [0.5, 0.85, 0.5] }}
+          className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary blur-md"
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      ) : (
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary blur-md opacity-100" />
+      )}
 
-      {/* Toggle circle */}
-      <motion.div
-        layout
-        animate={{ x: isDark ? 0 : 24 }}
-        className="relative z-10 w-5 h-5 rounded-full bg-white shadow-md flex items-center justify-center"
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      >
-        <AnimatePresence mode="wait">
-          {isDark ? (
+      {/* Toggle circle (transparent background, ring for contrast) */}
+      {animationsEnabled ? (
+        <motion.div
+          layout
+          animate={{ x: 0 }}
+          className="relative z-10 w-6 h-6 rounded-full bg-transparent flex items-center justify-center ring-1 ring-white/20 dark:ring-white/20"
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        >
+          <AnimatePresence mode="wait">
             <motion.div
               key="moon"
               animate={{ scale: 1, rotate: 0 }}
@@ -64,22 +69,19 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className }) => {
               initial={{ scale: 0, rotate: -180 }}
               transition={{ duration: 0.18 }}
             >
-              <MoonFilledIcon className="text-xs text-primary" />
+              <MoonFilledIcon className="text-primary" size={20} />
             </motion.div>
-          ) : (
-            <motion.div
-              key="sun"
-              animate={{ scale: 1, rotate: 0 }}
-              exit={{ scale: 0, rotate: 180 }}
-              initial={{ scale: 0, rotate: -180 }}
-              transition={{ duration: 0.18 }}
-            >
-              <SunFilledIcon className="text-xs text-yellow-500" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-
+          </AnimatePresence>
+        </motion.div>
+      ) : (
+        // static light-mode knob positioned to the right (no motion)
+        <div
+          className="relative z-10 w-6 h-6 rounded-full bg-white flex items-center justify-center ring-1 ring-white/20"
+          style={{ transform: "translateX(26px)" }}
+        >
+          <SunFilledIcon className="text-yellow-600" size={20} />
+        </div>
+      )}
       {/* Stars/ornaments for dark mode */}
       {isDark && (
         <motion.div
