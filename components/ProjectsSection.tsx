@@ -19,28 +19,32 @@ type Project = {
 
 const SAMPLE_PROJECTS: Project[] = [
   {
-    id: "p1",
-    title: "Portfolio UI",
-    category: "frontend",
-    description: "Modern responsive portfolio built with Next.js and HeroUI.",
-    demo: "#",
-    github: "#",
-  },
-  {
-    id: "p2",
-    title: "API Service",
-    category: "backend",
-    description: "Node.js microservice with GraphQL and authentication.",
-    demo: "#",
-    github: "#",
-  },
-  {
-    id: "p3",
-    title: "Fullstack App",
+    id: "ims",
+    title: "Interview Management System (IMS)",
     category: "fullstack",
-    description: "Fullstack app with Next.js, Prisma and Postgres.",
+    description:
+      "IMS is a modern recruitment support platform for candidate & job position management, interview scheduling, role-based access, and internal messaging.",
     demo: "#",
-    github: "#",
+    github:
+      "https://github.com/TranHoan-backend-dev/Interview-Management-System",
+  },
+  {
+    id: "labverse",
+    title: "LabVerse — Research Paper Management",
+    category: "fullstack",
+    description:
+      "LabVerse helps labs discover, organize, and collaborate on research papers; includes Android app and microservices.",
+    demo: "#",
+    github: "https://github.com/TranHoan-backend-dev/LabVerse",
+  },
+  {
+    id: "quezee",
+    title: "Quezee — Quiz Practice System",
+    category: "backend",
+    description:
+      "Quezee is an online quiz platform with progress tracking, user auth, and study modules built with Java servlet tech.",
+    demo: "#",
+    github: "https://github.com/TranHoan-backend-dev/Quiz-Practice-System",
   },
 ];
 
@@ -82,10 +86,16 @@ export const ProjectsSection: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {filtered.map((p) => (
-          <Card key={p.id} className="p-4 hover:shadow-lg transition-shadow">
-            <h3 className="font-semibold text-lg">{p.title}</h3>
-            <p className="text-sm mt-2 text-default-500">{p.description}</p>
-            <div className="mt-4 flex gap-2">
+          <Card
+            key={p.id}
+            className="p-4 relative hover:shadow-lg transition-shadow min-h-[160px]"
+          >
+            <div className="pb-14">
+              <h3 className="font-semibold text-lg">{p.title}</h3>
+              <p className="text-sm mt-2 text-default-500">{p.description}</p>
+            </div>
+
+            <div className="absolute bottom-4 right-4 flex gap-2">
               {p.demo && (
                 <Button
                   isExternal

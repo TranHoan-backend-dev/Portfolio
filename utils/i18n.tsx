@@ -10,13 +10,14 @@ const translations: Translations = {
   en: {
     welcome: "Welcome, I'm",
     intro:
-      "I build modern, fast, and beautiful web experiences. I specialize in full-stack applications with modern technologies.",
+      "Backend Developer with hands-on experience building scalable web and mobile applications. Skilled in frontend (React, TypeScript) and backend systems (Java, Spring Boot). Passionate about writing clean, maintainable code and improving system performance & reliability.",
     viewProjects: "View Projects",
     contactMe: "Contact Me",
-    developer: "Fullstack Developer",
+    developer: "Backend Developer",
+    full_name: "Trần Xuân Hoàn",
     about_title: "About Me",
     about_desc:
-      "I am a fullstack developer building modern web apps. I focus on performance, accessibility and great UX.",
+      "Backend Developer focusing on reliable, maintainable systems. Experienced with RESTful APIs, JWT auth, Docker-based development, relational and NoSQL databases, and component-driven frontends.",
     skills_title: "Skills & Technologies",
     projects_title: "Projects",
     projects_filter_all: "All",
@@ -35,13 +36,14 @@ const translations: Translations = {
   vi: {
     welcome: "Xin chào, tôi là",
     intro:
-      "Tôi tạo ra những trải nghiệm web hiện đại, nhanh chóng và đẹp mắt. Chuyên xây dựng ứng dụng full-stack với công nghệ mới nhất.",
+      "Lập trình viên Backend với kinh nghiệm xây dựng các ứng dụng web và mobile có khả năng mở rộng. Thành thạo frontend (React, TypeScript) và backend (Java, Spring Boot). Đam mê viết mã sạch, dễ bảo trì và cải thiện hiệu năng, độ tin cậy của hệ thống.",
     viewProjects: "Xem dự án",
     contactMe: "Liên hệ",
-    developer: "Fullstack Developer",
+    developer: "Lập trình viên Backend",
+    full_name: "Trần Xuân Hoàn",
     about_title: "Về tôi",
     about_desc:
-      "Tôi là một lập trình viên fullstack xây dựng các ứng dụng web hiện đại. Tôi chú trọng hiệu năng, truy cập và trải nghiệm người dùng.",
+      "Lập trình viên Backend tập trung vào hệ thống đáng tin cậy và dễ bảo trì. Có kinh nghiệm với RESTful API, xác thực JWT, Docker, và cả cơ sở dữ liệu quan hệ lẫn NoSQL.",
     skills_title: "Kỹ năng & Công nghệ",
     projects_title: "Dự án",
     projects_filter_all: "Tất cả",

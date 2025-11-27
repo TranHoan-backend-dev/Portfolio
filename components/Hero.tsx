@@ -47,8 +47,15 @@ export const Hero: React.FC = () => {
           className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center leading-tight max-w-3xl"
           variants={itemUp}
         >
-          {t("welcome")} <span className="text-primary">{t("developer")}</span>
+          {t("welcome")} <span className="text-primary">{t("full_name")}</span>
         </motion.h1>
+
+        <motion.div
+          className="mt-2 text-center text-lg text-default-600"
+          variants={itemUp}
+        >
+          {t("developer")}
+        </motion.div>
 
         <motion.p
           className="mt-4 text-base md:text-lg text-default-600 text-center max-w-2xl"

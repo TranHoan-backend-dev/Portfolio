@@ -15,13 +15,20 @@ export const Footer: React.FC = () => {
         <div className="text-sm">
           © {new Date().getFullYear()} {siteConfig.name}. {t("footer_rights")}
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center">
           <Link isExternal href={siteConfig.links.github}>
             GitHub
           </Link>
-          <Link isExternal href={siteConfig.links.twitter}>
-            Twitter
-          </Link>
+          {siteConfig.links.email && (
+            <Link isExternal href={siteConfig.links.email}>
+              Email
+            </Link>
+          )}
+          {siteConfig.links.portfolio && (
+            <Link isExternal href={siteConfig.links.portfolio}>
+              Portfolio
+            </Link>
+          )}
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Input } from "@heroui/input";
+import { Input, Textarea } from "@heroui/input";
 import { Button } from "@heroui/button";
 import "@heroui/input";
 import { motion } from "framer-motion";
@@ -24,7 +24,10 @@ export const ContactSection: React.FC = () => {
     }
 
     // Placeholder: send to backend or API
-    window.alert(t("contact_sent"));
+    window.alert(
+      t("contact_sent") +
+        "\nThank you — I will reply at hoana5k44nknd@gmail.com (placeholder).",
+    );
     setName("");
     setEmail("");
     setMessage("");
@@ -56,7 +59,7 @@ export const ContactSection: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
-        <textarea
+        <Textarea
           className="w-full p-2 rounded-md bg-default-100 text-default-900"
           placeholder={t("contact_message")}
           value={message}

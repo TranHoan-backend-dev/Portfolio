@@ -1,29 +1,15 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "Trần Xuân Hoàn",
+  description:
+    "Backend Developer — building scalable web & mobile applications. Java, Spring Boot, React, and modern backend systems.",
   navItems: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Docs",
-      href: "/docs",
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Contact", href: "#contact" },
+    { label: "About", href: "#about" },
   ],
   navMenuItems: [
     {
@@ -60,10 +46,12 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/heroui-inc/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    github: "https://github.com/TranHoan-backend-dev",
+    twitter: "https://twitter.com/",
+    docs: "",
+    discord: "",
+    sponsor: "",
+    email: "mailto:hoana5k44nknd@gmail.com",
+    portfolio: "https://tranhoan-dev.vercel.app",
   },
 };
