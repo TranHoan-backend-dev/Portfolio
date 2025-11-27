@@ -13,6 +13,14 @@ const config = {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
       },
+      colors: {
+        accent: {
+          450: '#5a0fd8'
+        }
+      },
+      backgroundImage: {
+        'dark-gradient': 'linear-gradient(180deg,#0d0d0d 0%, #5a0fd8 100%)'
+      }
     },
   },
   darkMode: "class",
