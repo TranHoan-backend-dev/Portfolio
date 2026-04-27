@@ -1,122 +1,211 @@
 "use client";
 
-import React from "react";
-import { Card } from "@heroui/card";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Card, CardBody } from "@heroui/card";
+import { Image } from "@heroui/image";
+import { Chip } from "@heroui/chip";
 import { Button } from "@heroui/button";
-import { Link } from "@heroui/link";
-import { motion } from "framer-motion";
-
-import { useLocale } from "@/utils/i18n";
+import { ExternalLink, Terminal, Server, Database, Layers } from 'lucide-react';
+import { GithubIcon as Github } from '@/components/icons';
 
 type Project = {
   id: string;
   title: string;
-  category: "frontend" | "backend" | "fullstack";
+  category: string;
   description: string;
-  demo?: string;
+  tech: string[];
+  impact: string;
+  images: string[];
   github?: string;
+  demo?: string;
 };
 
 const SAMPLE_PROJECTS: Project[] = [
   {
     id: "ims",
     title: "Interview Management System (IMS)",
-    category: "fullstack",
-    description:
-      "IMS is a modern recruitment support platform for candidate & job position management, interview scheduling, role-based access, and internal messaging.",
-    demo: "#",
-    github:
-      "https://github.com/TranHoan-backend-dev/Interview-Management-System",
+    category: "Full Stack (Java/Spring/React)",
+    description: "IMS là nền tảng hỗ trợ tuyển dụng hiện đại cho phép quản lý ứng viên, vị trí công việc, lịch phỏng vấn và trao đổi nội bộ.",
+    tech: ["Java 17", "Spring Boot", "React", "PostgreSQL", "Docker"],
+    impact: "Tối ưu hóa 40% quy trình tuyển dụng và lưu trữ dữ liệu tập trung.",
+    images: ["https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop"],
+    github: "https://github.com/TranHoan-backend-dev/Interview-Management-System"
   },
   {
     id: "labverse",
     title: "LabVerse — Research Paper Management",
-    category: "fullstack",
-    description:
-      "LabVerse helps labs discover, organize, and collaborate on research papers; includes Android app and microservices.",
-    demo: "#",
-    github: "https://github.com/TranHoan-backend-dev/LabVerse",
+    category: "Microservices & Android",
+    description: "Hệ thống hỗ trợ các phòng thí nghiệm khám phá, tổ chức và cộng tác trên các bài báo nghiên cứu.",
+    tech: ["Spring Cloud", "Android SDK", "MongoDB", "Redis"],
+    impact: "Hỗ trợ quản lý hơn 1000+ tài liệu nghiên cứu với kiến trúc microservices.",
+    images: ["https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070&auto=format&fit=crop"],
+    github: "https://github.com/TranHoan-backend-dev/LabVerse"
   },
   {
     id: "quezee",
     title: "Quezee — Quiz Practice System",
-    category: "backend",
-    description:
-      "Quezee is an online quiz platform with progress tracking, user auth, and study modules built with Java servlet tech.",
-    demo: "#",
-    github: "https://github.com/TranHoan-backend-dev/Quiz-Practice-System",
-  },
+    category: "Backend (Java Servlet)",
+    description: "Nền tảng ôn tập trắc nghiệm trực tuyến với tính năng theo dõi tiến độ và quản lý mô-đun học tập.",
+    tech: ["Java Servlet", "JSP", "MySQL", "Bootstrap"],
+    impact: "Hệ thống phục vụ nhu cầu ôn tập cho hơn 500+ sinh viên.",
+    images: ["https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop"],
+    github: "https://github.com/TranHoan-backend-dev/Quiz-Practice-System"
+  }
 ];
 
-export const ProjectsSection: React.FC = () => {
-  const { t } = useLocale();
-  const [filter, setFilter] = React.useState<string>("all");
+const ProjectImageCarousel = ({ images, title }: { images: string[], title: string }) => {
+    const [index, setIndex] = useState(0);
+    const [direction, setDirection] = useState(0);
 
-  const filtered =
-    filter === "all"
-      ? SAMPLE_PROJECTS
-      : SAMPLE_PROJECTS.filter((p) => p.category === filter);
+    useEffect(() => {
+        if (images.length <= 1) return;
+        const timer = setInterval(() => {
+            setDirection(1);
+            setIndex((prev) => (prev + 1) % images.length);
+        }, 4000);
+        return () => clearInterval(timer);
+    }, [index, images.length]);
 
-  return (
-    <motion.section
-      className="w-full max-w-6xl my-16 px-4"
-      id="projects"
-      initial={{ opacity: 0, y: 12 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      whileInView={{ opacity: 1, y: 0 }}
-    >
-      <div className="flex items-center gap-3 mb-6">
-        <span className="w-12 h-1 bg-cyan-500" />
-        <h2 className="text-2xl font-semibold">{t("projects_title")}</h2>
-      </div>
+    const variants = {
+        enter: (direction: number) => ({
+            x: direction > 0 ? '100%' : '-100%',
+            opacity: 1
+        }),
+        center: { zIndex: 1, x: 0, opacity: 1 },
+        exit: (direction: number) => ({
+            zIndex: 0,
+            x: direction < 0 ? '100%' : '-100%',
+            opacity: 1
+        })
+    };
 
-      <div className="flex gap-2 mb-6">
-        {(["all", "frontend", "backend", "fullstack"] as const).map((c) => (
-          <Button
-            key={c}
-            size="sm"
-            variant={filter === c ? "solid" : "flat"}
-            onClick={() => setFilter(c)}
-          >
-            {c === "all" ? t("projects_filter_all") : c}
-          </Button>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {filtered.map((p) => (
-          <Card
-            key={p.id}
-            className="p-4 relative hover:shadow-lg transition-shadow min-h-[160px]"
-          >
-            <div className="pb-14">
-              <h3 className="font-semibold text-lg">{p.title}</h3>
-              <p className="text-sm mt-2 text-default-500">{p.description}</p>
-            </div>
-
-            <div className="absolute bottom-4 right-4 flex gap-2">
-              {p.demo && (
-                <Button
-                  isExternal
-                  as={Link}
-                  href={p.demo}
-                  size="sm"
-                  variant="ghost"
+    return (
+        <div className="w-full h-full relative overflow-hidden bg-brand-dark">
+             <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                <motion.div
+                    key={index}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                    }}
+                    className="absolute inset-0 w-full h-full"
                 >
-                  {t("project_demo")}
-                </Button>
-              )}
-              {p.github && (
-                <Button isExternal as={Link} href={p.github} size="sm">
-                  {t("project_github")}
-                </Button>
-              )}
+                    <Image
+                        src={images[index]}
+                        alt={`${title} ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        removeWrapper
+                    />
+                </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-brand-dark/10 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
+        </div>
+    );
+};
+
+export const ProjectsSection: React.FC = () => {
+  return (
+    <section id="projects" className="py-24 relative">
+        <div className="absolute right-0 top-1/4 w-1/2 h-1/2 bg-brand-cyan/5 blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+                <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">Portfolio & Projects</span>
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-white mt-2">Dự Án Tâm Đắc</h2>
             </div>
-          </Card>
-        ))}
+        </div>
+
+        <div className="space-y-24">
+          {SAMPLE_PROJECTS.map((project, index) => (
+            <motion.div 
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+                className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}
+            >
+                {/* Image Side */}
+                <div className="w-full lg:w-3/5 group relative">
+                    <div className="relative aspect-video rounded-xl overflow-hidden bg-brand-dark shadow-2xl shadow-brand-cyan/10 border border-brand-gray/30 transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-rotate-1">
+                        <ProjectImageCarousel images={project.images} title={project.title} />
+                    </div>
+                    <div className="absolute -inset-4 border border-brand-gray/20 rounded-xl -z-10 translate-x-4 translate-y-4" />
+                </div>
+
+                {/* Content Side */}
+                <div className="w-full lg:w-2/5 space-y-6">
+                    <Chip 
+                        variant="flat" 
+                        color="primary" 
+                        className="text-brand-cyan bg-brand-cyan/10 font-mono text-xs px-3"
+                    >
+                        {project.category}
+                    </Chip>
+                    <h3 className="text-3xl font-display font-bold text-white">{project.title}</h3>
+                    <p className="text-brand-light text-lg leading-relaxed">
+                        {project.description}
+                    </p>
+                    
+                    <Card className="bg-brand-gray/20 border-l-4 border-brand-gold rounded-lg shadow-none">
+                        <CardBody className="p-4">
+                            <p className="text-brand-gold font-bold text-sm uppercase tracking-wider mb-1">Challenge & Impact</p>
+                            <p className="text-white text-sm">{project.impact}</p>
+                        </CardBody>
+                    </Card>
+
+                    <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tech.map(t => (
+                            <Chip 
+                                key={t} 
+                                variant="bordered" 
+                                size="sm"
+                                className="border-brand-gray text-brand-light/60 font-mono text-xs"
+                            >
+                                {t}
+                            </Chip>
+                        ))}
+                    </div>
+
+                    <div className="flex gap-4 pt-4">
+                        {project.github && (
+                            <Button
+                                isExternal
+                                as="a"
+                                href={project.github}
+                                variant="light"
+                                className="text-white hover:text-brand-cyan font-bold"
+                                startContent={<Github className="w-5 h-5" />}
+                            >
+                                Code
+                            </Button>
+                        )}
+                        {project.demo && (
+                            <Button
+                                isExternal
+                                as="a"
+                                href={project.demo}
+                                variant="light"
+                                className="text-white hover:text-brand-cyan font-bold"
+                                startContent={<ExternalLink className="w-5 h-5" />}
+                            >
+                                Demo
+                            </Button>
+                        )}
+                    </div>
+                </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

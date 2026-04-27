@@ -2,33 +2,73 @@
 
 import React from "react";
 import { Link } from "@heroui/link";
+import { Button } from "@heroui/button";
+import { Terminal, Mail, Globe, Heart } from "lucide-react";
 
-import { siteConfig } from "@/config/site";
-import { useLocale } from "@/utils/i18n";
+import { GithubIcon as Github } from "@/components/icons";
 
 export const Footer: React.FC = () => {
-  const { t } = useLocale();
-
   return (
-    <footer className="w-full border-t dark:border-default-800 mt-16 py-6">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="text-sm">
-          © {new Date().getFullYear()} {siteConfig.name}. {t("footer_rights")}
+    <footer className="bg-brand-dark border-t border-brand-gray/30 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
+          {/* Logo & Info */}
+          <div className="flex flex-col items-center md:items-start space-y-4">
+            <div className="flex items-center space-x-2">
+              <Terminal className="w-6 h-6 text-brand-cyan" />
+              <span className="font-display font-bold text-xl text-white">
+                TRANHOAN<span className="text-brand-cyan">.DEV</span>
+              </span>
+            </div>
+            <p className="text-brand-light text-sm max-w-xs text-center md:text-left">
+              Backend Developer specializing in scalable systems and clean
+              architecture.
+            </p>
+          </div>
+
+          {/* Links using HeroUI Button and Link */}
+          <div className="flex space-x-4">
+            <Button
+              isExternal
+              isIconOnly
+              as={Link}
+              className="bg-brand-gray/20 text-brand-light hover:text-brand-cyan hover:bg-brand-gray/40 transition-all rounded-full"
+              href="https://github.com/TranHoan-backend-dev"
+              variant="flat"
+            >
+              <Github className="w-5 h-5" />
+            </Button>
+            <Button
+              isIconOnly
+              as={Link}
+              className="bg-brand-gray/20 text-brand-light hover:text-brand-cyan hover:bg-brand-gray/40 transition-all rounded-full"
+              href="mailto:hoana5k44nknd@gmail.com"
+              variant="flat"
+            >
+              <Mail className="w-5 h-5" />
+            </Button>
+            <Button
+              isExternal
+              isIconOnly
+              as={Link}
+              className="bg-brand-gray/20 text-brand-light hover:text-brand-cyan hover:bg-brand-gray/40 transition-all rounded-full"
+              href="https://tranhoan-dev.vercel.app"
+              variant="flat"
+            >
+              <Globe className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
-        <div className="flex gap-3 items-center">
-          <Link isExternal href={siteConfig.links.github}>
-            GitHub
-          </Link>
-          {siteConfig.links.email && (
-            <Link isExternal href={siteConfig.links.email}>
-              Email
-            </Link>
-          )}
-          {siteConfig.links.portfolio && (
-            <Link isExternal href={siteConfig.links.portfolio}>
-              Portfolio
-            </Link>
-          )}
+
+        <div className="mt-12 pt-8 border-t border-brand-gray/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-brand-light/40 text-xs">
+            © {new Date().getFullYear()} Tran Xuan Hoan. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-1 text-brand-light/40 text-xs">
+            <span>Built with</span>
+            <Heart className="w-3 h-3 text-red-500 fill-red-500" />
+            <span>using HeroUI, Next.js & Framer Motion</span>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,167 +1,137 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import {
   Navbar as HeroUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
   NavbarBrand,
+  NavbarContent,
   NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
-// import { Input } from "@heroui/input";
-import { link as linkStyles } from "@heroui/theme";
-import NextLink from "next/link";
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
+import { Button } from "@heroui/button";
+import { Terminal, Server } from "lucide-react";
 
-import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { LanguageToggle } from "@/components/LanguageToggle";
-import {
-  GithubIcon,
-  // HeartFilledIcon,
-  // SearchIcon,
-  // Logo,
-} from "@/components/icons";
 
-export const Navbar = () => {
-  // search removed per design
-  const pathname = usePathname() || "/";
+export const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const isActive = (href: string) => {
-    if (!href) return false;
-    // treat root specially
-    if (href === "/") return pathname === "/";
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-    return pathname === href || pathname.startsWith(href);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
   };
+
+  const navLinks = [
+    { id: "hero", label: "Trang Chủ" },
+    { id: "about", label: "Giới Thiệu" },
+    { id: "projects", label: "Dự Án" },
+    { id: "contact", label: "Liên Hệ" },
+  ];
 
   return (
     <HeroUINavbar
-      className="fixed top-0 left-0 w-full z-50 bg-white/50 dark:bg-white/10 backdrop-blur-md shadow-sm hero-navbar-custom border-b border-transparent"
+      className={`fixed top-0 transition-all duration-300 ${scrolled
+          ? "bg-brand-dark/80 backdrop-blur-md border-b border-brand-gray"
+          : "bg-transparent"
+        }`}
+      classNames={{
+        wrapper: "px-4 sm:px-6 lg:px-8 h-20",
+      }}
+      id="main-nav"
+      isMenuOpen={isMenuOpen}
       maxWidth="xl"
       position="sticky"
+      onMenuOpenChange={setIsMenuOpen}
     >
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex items-center gap-3" href="/">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white shadow-lg">
-              {/* simple up/down chevrons */}
-              <svg
-                fill="none"
-                height="20"
-                viewBox="0 0 24 24"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6 10l6-6 6 6"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.6"
-                />
-                <path
-                  d="M6 14l6 6 6-6"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.6"
-                />
-              </svg>
+      <NavbarContent>
+        <NavbarBrand>
+          <div
+            className="flex items-center space-x-2 cursor-pointer group"
+            onClick={() => scrollToSection("hero")}
+          >
+            <div className="relative">
+              <Terminal className="w-8 h-8 text-brand-cyan transition-transform group-hover:rotate-12" />
+              <Server className="w-4 h-4 text-brand-gold absolute -bottom-1 -right-1" />
             </div>
-            <p className="font-bold text-inherit text-primary">
-              {siteConfig.name}
-            </p>
-          </NextLink>
+            <span className="font-display font-bold text-2xl tracking-tighter text-white uppercase">
+              TRANHOAN<span className="text-brand-cyan">.DEV</span>
+            </span>
+          </div>
         </NavbarBrand>
       </NavbarContent>
 
-      {/* Center nav for large screens */}
-      <NavbarContent
-        className="hidden lg:flex basis-auto justify-center"
-        justify="center"
-      >
-        <ul className="flex gap-6">
-          {siteConfig.navItems.map((item) => {
-            const active = isActive(item.href);
-
-            return (
-              <NavbarItem key={item.href} className="list-none">
-                <NextLink
-                  className={clsx(
-                    "group px-2 py-1 relative inline-block",
-                    linkStyles({ color: active ? "primary" : "foreground" }),
-                    active ? "text-primary font-medium" : "hover:text-primary",
-                  )}
-                  href={item.href}
-                >
-                  <span className="inline-block">{item.label}</span>
-                  <span
-                    className={clsx(
-                      "absolute left-0 right-0 -bottom-2 h-0.5 bg-gradient-to-r from-primary to-secondary origin-left transition-transform duration-200",
-                      active
-                        ? "scale-x-100"
-                        : "scale-x-0 group-hover:scale-x-100",
-                    )}
-                  />
-                </NextLink>
-              </NavbarItem>
-            );
-          })}
-        </ul>
+      <NavbarContent className="hidden md:flex gap-8" justify="center">
+        {navLinks.map((link) => (
+          <NavbarItem key={link.id}>
+            <Link
+              className="font-sans text-sm font-medium text-brand-light hover:text-brand-cyan transition-colors relative group cursor-pointer"
+              onClick={() => scrollToSection(link.id)}
+            >
+              {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-cyan transition-all group-hover:w-full" />
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden lg:flex gap-3 items-center">
-          <div className="flex items-center gap-2">
-            <LanguageToggle />
-            <ThemeSwitch />
-          </div>
-
+      <NavbarContent justify="end">
+        <NavbarItem className="flex gap-4 items-center">
+          <ThemeSwitch />
           <Button
-            className="rounded-md bg-gradient-to-r from-primary to-secondary text-white shadow-md"
-            size="sm"
+            className="hidden md:flex border-brand-cyan text-brand-cyan font-medium text-sm hover:bg-brand-cyan hover:text-brand-dark transition-all duration-300 shadow-[0_0_15px_rgba(102,252,241,0.3)]"
+            radius="full"
+            variant="bordered"
+            onPress={() => scrollToSection("contact")}
           >
-            Thuê Tôi
+            Kết Nối
           </Button>
         </NavbarItem>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="md:hidden text-brand-light"
+        />
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent>
-
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
+      <NavbarMenu className="bg-brand-dark/95 backdrop-blur-xl pt-6">
+        {navLinks.map((link) => (
+          <NavbarMenuItem key={link.id}>
+            <Link
+              className="w-full text-brand-light hover:text-brand-cyan py-4 text-lg font-medium border-b border-brand-gray/30"
+              size="lg"
+              onClick={() => scrollToSection(link.id)}
+            >
+              {link.label}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+        <NavbarMenuItem className="pt-4">
+          <Button
+            fullWidth
+            className="bg-brand-cyan text-brand-dark font-bold py-6"
+            radius="lg"
+            onPress={() => scrollToSection("contact")}
+          >
+            Kết Nối Ngay
+          </Button>
+        </NavbarMenuItem>
       </NavbarMenu>
     </HeroUINavbar>
   );
