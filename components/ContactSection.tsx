@@ -59,7 +59,7 @@ export const ContactSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
           >
             <h2 className="text-5xl md:text-6xl font-display font-bold text-white">
-              Let's build <br />
+              Let&apos;s build <br />
               <span className="text-brand-cyan">the future.</span>
             </h2>
             <p className="text-brand-light text-lg max-w-md">
@@ -68,11 +68,9 @@ export const ContactSection: React.FC = () => {
             </p>
 
             <div className="space-y-6 pt-8">
-              <div
-                className="flex items-center space-x-4 group cursor-pointer"
-                onClick={() =>
-                  (window.location.href = "mailto:hoana5k44nknd@gmail.com")
-                }
+              <a
+                className="flex items-center space-x-4 group cursor-pointer w-full text-left"
+                href="mailto:hoana5k44nknd@gmail.com"
               >
                 <div className="w-12 h-12 bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-cyan group-hover:text-brand-dark transition-all duration-300 text-brand-cyan">
                   <Mail className="w-5 h-5" />
@@ -83,16 +81,13 @@ export const ContactSection: React.FC = () => {
                     hoana5k44nknd@gmail.com
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
-                className="flex items-center space-x-4 group cursor-pointer"
-                onClick={() =>
-                  window.open(
-                    "https://github.com/TranHoan-backend-dev",
-                    "_blank",
-                  )
-                }
+              <a
+                className="flex items-center space-x-4 group cursor-pointer w-full text-left"
+                href="https://github.com/TranHoan-backend-dev"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <div className="w-12 h-12 bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-cyan group-hover:text-brand-dark transition-all duration-300 text-brand-cyan">
                   <Github className="w-5 h-5" />
@@ -103,13 +98,13 @@ export const ContactSection: React.FC = () => {
                     TranHoan-backend-dev
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div
-                className="flex items-center space-x-4 group cursor-pointer"
-                onClick={() =>
-                  window.open("https://tranhoan-dev.vercel.app", "_blank")
-                }
+              <a
+                className="flex items-center space-x-4 group cursor-pointer w-full text-left"
+                href="https://tranhoan-dev.vercel.app"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <div className="w-12 h-12 bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-cyan group-hover:text-brand-dark transition-all duration-300 text-brand-cyan">
                   <Globe className="w-5 h-5" />
@@ -120,7 +115,7 @@ export const ContactSection: React.FC = () => {
                     tranhoan-dev.vercel.app
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
           </motion.div>
 
@@ -185,7 +180,7 @@ export const ContactSection: React.FC = () => {
                 }
               >
                 {interests.map((i) => (
-                  <SelectItem key={i.value} value={i.value}>
+                  <SelectItem key={i.value}>
                     {i.label}
                   </SelectItem>
                 ))}

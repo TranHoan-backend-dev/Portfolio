@@ -63,8 +63,8 @@ export const Navbar: React.FC = () => {
     >
       <NavbarContent>
         <NavbarBrand>
-          <div
-            className="flex items-center space-x-2 cursor-pointer group"
+          <button
+            className="flex items-center space-x-2 cursor-pointer group border-none bg-transparent p-0 text-left"
             onClick={() => scrollToSection("hero")}
           >
             <div className="relative">
@@ -74,7 +74,7 @@ export const Navbar: React.FC = () => {
             <span className="font-display font-bold text-2xl tracking-tighter text-white uppercase">
               TRANHOAN<span className="text-brand-cyan">.DEV</span>
             </span>
-          </div>
+          </button>
         </NavbarBrand>
       </NavbarContent>
 
