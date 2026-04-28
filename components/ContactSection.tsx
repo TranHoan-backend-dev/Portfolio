@@ -46,7 +46,7 @@ export const ContactSection: React.FC = () => {
 
   return (
     <section
-      className="py-24 relative overflow-hidden bg-gradient-to-t from-black to-brand-dark"
+      className="py-24 relative overflow-hidden bg-gradient-to-t from-gray-100 to-white dark:from-black dark:to-brand-dark"
       id="contact"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -58,11 +58,11 @@ export const ContactSection: React.FC = () => {
             viewport={{ once: true }}
             whileInView={{ opacity: 1, x: 0 }}
           >
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-white">
+            <h2 className="text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white">
               Let&apos;s build <br />
-              <span className="text-brand-cyan">the future.</span>
+              <span className="text-brand-teal dark:text-brand-cyan">the future.</span>
             </h2>
-            <p className="text-brand-light text-lg max-w-md">
+            <p className="text-gray-600 dark:text-brand-light text-lg max-w-md">
               Tôi luôn sẵn sàng thảo luận về các dự án Backend, kiến trúc hệ
               thống hoặc các cơ hội hợp tác phát triển phần mềm.
             </p>
@@ -72,12 +72,12 @@ export const ContactSection: React.FC = () => {
                 className="flex items-center space-x-4 group cursor-pointer w-full text-left"
                 href="mailto:hoana5k44nknd@gmail.com"
               >
-                <div className="w-12 h-12 bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-cyan group-hover:text-brand-dark transition-all duration-300 text-brand-cyan">
+                <div className="w-12 h-12 bg-gray-200 dark:bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-teal dark:group-hover:bg-brand-cyan group-hover:text-white dark:group-hover:text-brand-dark transition-all duration-300 text-brand-teal dark:text-brand-cyan">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm text-brand-light/60">Email</p>
-                  <p className="text-white font-medium text-lg">
+                  <p className="text-sm text-gray-500 dark:text-brand-light/60">Email</p>
+                  <p className="text-gray-900 dark:text-white font-medium text-lg">
                     hoana5k44nknd@gmail.com
                   </p>
                 </div>
@@ -89,12 +89,12 @@ export const ContactSection: React.FC = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <div className="w-12 h-12 bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-cyan group-hover:text-brand-dark transition-all duration-300 text-brand-cyan">
+                <div className="w-12 h-12 bg-gray-200 dark:bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-teal dark:group-hover:bg-brand-cyan group-hover:text-white dark:group-hover:text-brand-dark transition-all duration-300 text-brand-teal dark:text-brand-cyan">
                   <Github className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm text-brand-light/60">Github</p>
-                  <p className="text-white font-medium text-lg">
+                  <p className="text-sm text-gray-500 dark:text-brand-light/60">Github</p>
+                  <p className="text-gray-900 dark:text-white font-medium text-lg">
                     TranHoan-backend-dev
                   </p>
                 </div>
@@ -106,12 +106,12 @@ export const ContactSection: React.FC = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <div className="w-12 h-12 bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-cyan group-hover:text-brand-dark transition-all duration-300 text-brand-cyan">
+                <div className="w-12 h-12 bg-gray-200 dark:bg-brand-gray/30 rounded-full flex items-center justify-center group-hover:bg-brand-teal dark:group-hover:bg-brand-cyan group-hover:text-white dark:group-hover:text-brand-dark transition-all duration-300 text-brand-teal dark:text-brand-cyan">
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm text-brand-light/60">Portfolio</p>
-                  <p className="text-white font-medium text-lg">
+                  <p className="text-sm text-gray-500 dark:text-brand-light/60">Portfolio</p>
+                  <p className="text-gray-900 dark:text-white font-medium text-lg">
                     tranhoan-dev.vercel.app
                   </p>
                 </div>
@@ -121,7 +121,7 @@ export const ContactSection: React.FC = () => {
 
           {/* Right Form using HeroUI */}
           <motion.div
-            className="bg-brand-gray/10 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-brand-gray/30 shadow-2xl"
+            className="bg-white/80 dark:bg-brand-gray/10 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-brand-gray/30 shadow-2xl shadow-gray-200/50 dark:shadow-2xl"
             initial={{ opacity: 0, x: 50 }}
             viewport={{ once: true }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -131,8 +131,9 @@ export const ContactSection: React.FC = () => {
                 <Input
                   classNames={{
                     inputWrapper:
-                      "border-brand-gray focus-within:border-brand-cyan",
-                    label: "text-brand-light",
+                      "border-gray-300 dark:border-brand-gray focus-within:border-brand-teal dark:focus-within:border-brand-cyan bg-white dark:bg-transparent",
+                    label: "text-gray-700 dark:text-brand-light",
+                    input: "text-gray-900 dark:text-white",
                   }}
                   label="Họ tên"
                   labelPlacement="outside"
@@ -146,8 +147,9 @@ export const ContactSection: React.FC = () => {
                 <Input
                   classNames={{
                     inputWrapper:
-                      "border-brand-gray focus-within:border-brand-cyan",
-                    label: "text-brand-light",
+                      "border-gray-300 dark:border-brand-gray focus-within:border-brand-teal dark:focus-within:border-brand-cyan bg-white dark:bg-transparent",
+                    label: "text-gray-700 dark:text-brand-light",
+                    input: "text-gray-900 dark:text-white",
                   }}
                   label="Email"
                   labelPlacement="outside"
@@ -163,9 +165,9 @@ export const ContactSection: React.FC = () => {
 
               <Select
                 classNames={{
-                  trigger: "border-brand-gray focus-within:border-brand-cyan",
-                  label: "text-brand-light",
-                  value: "text-white",
+                  trigger: "border-gray-300 dark:border-brand-gray focus-within:border-brand-teal dark:focus-within:border-brand-cyan bg-white dark:bg-transparent",
+                  label: "text-gray-700 dark:text-brand-light",
+                  value: "text-gray-900 dark:text-white",
                 }}
                 label="Dịch vụ quan tâm"
                 labelPlacement="outside"
@@ -189,8 +191,9 @@ export const ContactSection: React.FC = () => {
               <Textarea
                 classNames={{
                   inputWrapper:
-                    "border-brand-gray focus-within:border-brand-cyan",
-                  label: "text-brand-light",
+                    "border-gray-300 dark:border-brand-gray focus-within:border-brand-teal dark:focus-within:border-brand-cyan bg-white dark:bg-transparent",
+                  label: "text-gray-700 dark:text-brand-light",
+                  input: "text-gray-900 dark:text-white",
                 }}
                 label="Tin nhắn"
                 labelPlacement="outside"
@@ -207,12 +210,12 @@ export const ContactSection: React.FC = () => {
                 fullWidth
                 className={`font-bold text-lg py-7 transition-all duration-300
                             ${status === "sending"
-                    ? "bg-brand-gray cursor-wait text-brand-light"
+                    ? "bg-gray-300 dark:bg-brand-gray cursor-wait text-gray-500 dark:text-brand-light"
                     : status === "success"
                       ? "bg-green-500 text-white"
                       : status === "error"
                         ? "bg-red-500 text-white"
-                        : "bg-white text-brand-dark hover:bg-brand-cyan shadow-[0_0_20px_rgba(102,252,241,0.2)]"
+                        : "bg-gray-900 text-white dark:bg-white dark:text-brand-dark hover:bg-brand-teal dark:hover:bg-brand-cyan shadow-lg dark:shadow-[0_0_20px_rgba(102,252,241,0.2)]"
                   }`}
                 disabled={status === "sending" || status === "success"}
                 endContent={status === "idle" && <Send className="w-5 h-5" />}

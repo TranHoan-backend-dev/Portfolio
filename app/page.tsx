@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+
 import { Navbar } from "@/components/navbar";
 import Hero from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
@@ -16,6 +17,7 @@ export default function Home() {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,7 +26,7 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen bg-brand-dark text-white font-sans selection:bg-brand-cyan selection:text-brand-dark overflow-hidden">
+    <div className="relative min-h-screen bg-gray-50 text-gray-900 dark:bg-brand-dark dark:text-white font-sans selection:bg-brand-cyan selection:text-brand-dark overflow-hidden transition-colors duration-300">
       {/* High-End CSS Background */}
       <div className="fixed inset-0 z-0">
         {/* Animated Gradient Orbs */}
@@ -58,7 +60,7 @@ export default function Home() {
       </div>
 
       {/* Ambient Lighting Overlay */}
-      <div className="fixed inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-brand-dark/50 to-brand-dark mix-blend-multiply" />
+      <div className="fixed inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-white/50 to-white dark:via-brand-dark/50 dark:to-brand-dark mix-blend-multiply" />
     </div>
   );
 }

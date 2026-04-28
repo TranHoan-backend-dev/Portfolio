@@ -100,7 +100,7 @@ const ProjectImageCarousel = ({
     };
 
     return (
-        <div className="w-full h-full relative overflow-hidden bg-brand-dark">
+        <div className="w-full h-full relative overflow-hidden bg-gray-100 dark:bg-brand-dark">
             <AnimatePresence custom={direction} initial={false} mode="popLayout">
                 <motion.div
                     key={index}
@@ -123,7 +123,7 @@ const ProjectImageCarousel = ({
                     />
                 </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-0 bg-brand-dark/10 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-white/10 dark:bg-brand-dark/10 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
         </div>
     );
 };
@@ -136,10 +136,10 @@ export const ProjectsSection: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16">
                     <div>
-                        <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">
+                        <span className="text-brand-teal dark:text-brand-cyan font-mono text-sm tracking-widest uppercase">
                             Portfolio & Projects
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-white mt-2">
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mt-2">
                             Dự Án Tâm Đắc
                         </h2>
                     </div>
@@ -157,37 +157,37 @@ export const ProjectsSection: React.FC = () => {
                         >
                             {/* Image Side */}
                             <div className="w-full lg:w-3/5 group relative">
-                                <div className="relative aspect-video rounded-xl overflow-hidden bg-brand-dark shadow-2xl shadow-brand-cyan/10 border border-brand-gray/30 transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-rotate-1">
+                                <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-brand-dark shadow-2xl shadow-gray-200 dark:shadow-brand-cyan/10 border border-gray-200 dark:border-brand-gray/30 transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-rotate-1">
                                     <ProjectImageCarousel
                                         images={project.images}
                                         title={project.title}
                                     />
                                 </div>
-                                <div className="absolute -inset-4 border border-brand-gray/20 rounded-xl -z-10 translate-x-4 translate-y-4" />
+                                <div className="absolute -inset-4 border border-gray-200 dark:border-brand-gray/20 rounded-xl -z-10 translate-x-4 translate-y-4" />
                             </div>
 
                             {/* Content Side */}
                             <div className="w-full lg:w-2/5 space-y-6">
                                 <Chip
-                                    className="text-brand-cyan bg-brand-cyan/10 font-mono text-xs px-3"
+                                    className="text-brand-teal bg-brand-teal/10 dark:text-brand-cyan dark:bg-brand-cyan/10 font-mono text-xs px-3"
                                     color="primary"
                                     variant="flat"
                                 >
                                     {project.category}
                                 </Chip>
-                                <h3 className="text-3xl font-display font-bold text-white">
+                                <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white">
                                     {project.title}
                                 </h3>
-                                <p className="text-brand-light text-lg leading-relaxed">
+                                <p className="text-gray-700 dark:text-brand-light text-lg leading-relaxed">
                                     {project.description}
                                 </p>
 
-                                <Card className="bg-brand-gray/20 border-l-4 border-brand-gold rounded-lg shadow-none">
+                                <Card className="bg-gray-100 dark:bg-brand-gray/20 border-l-4 border-brand-gold rounded-lg shadow-none">
                                     <CardBody className="p-4">
-                                        <p className="text-brand-gold font-bold text-sm uppercase tracking-wider mb-1">
+                                        <p className="text-yellow-600 dark:text-brand-gold font-bold text-sm uppercase tracking-wider mb-1">
                                             Challenge & Impact
                                         </p>
-                                        <p className="text-white text-sm">{project.impact}</p>
+                                        <p className="text-gray-800 dark:text-white text-sm">{project.impact}</p>
                                     </CardBody>
                                 </Card>
 
@@ -195,7 +195,7 @@ export const ProjectsSection: React.FC = () => {
                                     {project.tech.map((t) => (
                                         <Chip
                                             key={t}
-                                            className="border-brand-gray text-brand-light/60 font-mono text-xs"
+                                            className="border-gray-300 dark:border-brand-gray text-gray-600 dark:text-brand-light/60 font-mono text-xs"
                                             size="sm"
                                             variant="bordered"
                                         >
@@ -208,7 +208,7 @@ export const ProjectsSection: React.FC = () => {
                                     {project.github && (
                                         <Button
                                             as="a"
-                                            className="text-white hover:text-brand-cyan font-bold"
+                                            className="text-gray-900 dark:text-white hover:text-brand-teal dark:hover:text-brand-cyan font-bold"
                                             href={project.github}
                                             rel="noopener noreferrer"
                                             startContent={<Github className="w-5 h-5" />}
@@ -221,7 +221,7 @@ export const ProjectsSection: React.FC = () => {
                                     {project.demo && (
                                         <Button
                                             as="a"
-                                            className="text-white hover:text-brand-cyan font-bold"
+                                            className="text-gray-900 dark:text-white hover:text-brand-teal dark:hover:text-brand-cyan font-bold"
                                             href={project.demo}
                                             rel="noopener noreferrer"
                                             startContent={<ExternalLink className="w-5 h-5" />}

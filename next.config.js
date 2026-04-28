@@ -8,9 +8,7 @@ const nextConfig = {
     "@react-three/fiber", 
     "@react-three/drei", 
     "its-fine", 
-    "react-reconciler",
-    "react",
-    "react-dom"
+    "react-reconciler"
   ],
 };
 

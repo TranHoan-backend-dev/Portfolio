@@ -30,10 +30,10 @@ export const Hero: React.FC = () => {
               transition={{ delay: 0.3 }}
             >
               <Chip
-                className="bg-brand-gray/30 border-brand-gray backdrop-blur-sm px-4 py-4 text-brand-light font-mono uppercase tracking-wider"
+                className="bg-gray-200/50 dark:bg-brand-gray/30 border-gray-300 dark:border-brand-gray backdrop-blur-sm px-4 py-4 text-gray-700 dark:text-brand-light font-mono uppercase tracking-wider"
                 color="primary"
                 startContent={
-                  <Terminal className="w-4 h-4 text-brand-cyan mr-1" />
+                  <Terminal className="w-4 h-4 text-brand-teal dark:text-brand-cyan mr-1" />
                 }
                 variant="dot"
               >
@@ -41,21 +41,21 @@ export const Hero: React.FC = () => {
               </Chip>
             </motion.div>
 
-            <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[0.9] text-white">
+            <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[0.9] text-gray-900 dark:text-white">
               TRẦN XUÂN <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-blue-500 to-purple-600 animate-gradient-x">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal dark:from-brand-cyan via-blue-500 to-purple-600 animate-gradient-x">
                 HOÀN
               </span>
             </h1>
 
-            <div className="font-display font-bold text-2xl sm:text-3xl text-brand-light/80">
+            <div className="font-display font-bold text-2xl sm:text-3xl text-gray-600 dark:text-brand-light/80">
               IT <span className="text-brand-gold">x</span> BACKEND{" "}
-              <span className="text-brand-cyan">x</span> SCALABILITY
+              <span className="text-brand-teal dark:text-brand-cyan">x</span> SCALABILITY
             </div>
 
-            <p className="font-sans text-lg sm:text-xl text-brand-light max-w-lg leading-relaxed">
+            <p className="font-sans text-lg sm:text-xl text-gray-600 dark:text-brand-light max-w-lg leading-relaxed">
               Tôi xây dựng các hệ thống{" "}
-              <span className="text-brand-cyan font-bold">Backend</span> hiệu
+              <span className="text-brand-teal dark:text-brand-cyan font-bold">Backend</span> hiệu
               năng cao và có khả năng mở rộng. Chuyên sâu về{" "}
               <span className="text-brand-gold font-bold">
                 Java & Spring Boot
@@ -65,7 +65,7 @@ export const Hero: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                className="bg-white text-brand-dark font-bold text-lg px-8 py-7 hover:bg-brand-cyan transition-all group"
+                className="bg-gray-900 text-white dark:bg-white dark:text-brand-dark font-bold text-lg px-8 py-7 hover:bg-brand-teal dark:hover:bg-brand-cyan transition-all group"
                 endContent={
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 }
@@ -81,7 +81,7 @@ export const Hero: React.FC = () => {
               </Button>
 
               <Button
-                className="border-brand-gray text-white font-medium text-lg px-8 py-7 hover:border-brand-cyan hover:text-brand-cyan transition-all backdrop-blur-sm bg-brand-dark/20"
+                className="border-gray-300 text-gray-900 dark:border-brand-gray dark:text-white font-medium text-lg px-8 py-7 hover:border-brand-teal hover:text-brand-teal dark:hover:border-brand-cyan dark:hover:text-brand-cyan transition-all backdrop-blur-sm bg-gray-100/50 dark:bg-brand-dark/20"
                 radius="sm"
                 size="lg"
                 variant="bordered"
@@ -96,16 +96,16 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Stats/Badges */}
-            <div className="pt-8 grid grid-cols-2 md:grid-cols-3 gap-6 border-t border-brand-gray/30">
+            <div className="pt-8 grid grid-cols-2 md:grid-cols-3 gap-6 border-t border-gray-200 dark:border-brand-gray/30">
               <div className="flex items-center space-x-3">
-                <div className="p-2 bg-brand-cyan/10 rounded-lg">
-                  <Server className="text-brand-cyan w-5 h-5" />
+                <div className="p-2 bg-brand-teal/10 dark:bg-brand-cyan/10 rounded-lg">
+                  <Server className="text-brand-teal dark:text-brand-cyan w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-lg font-display font-bold text-white">
+                  <p className="text-lg font-display font-bold text-gray-900 dark:text-white">
                     Spring Boot
                   </p>
-                  <p className="text-[10px] text-brand-light font-mono uppercase">
+                  <p className="text-[10px] text-gray-500 dark:text-brand-light font-mono uppercase">
                     Microservices / Security
                   </p>
                 </div>
@@ -115,10 +115,10 @@ export const Hero: React.FC = () => {
                   <Cpu className="text-brand-gold w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-lg font-display font-bold text-white">
+                  <p className="text-lg font-display font-bold text-gray-900 dark:text-white">
                     System Design
                   </p>
-                  <p className="text-[10px] text-brand-light font-mono uppercase">
+                  <p className="text-[10px] text-gray-500 dark:text-brand-light font-mono uppercase">
                     Scalability / Patterns
                   </p>
                 </div>
@@ -128,10 +128,10 @@ export const Hero: React.FC = () => {
                   <Code className="text-purple-500 w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-lg font-display font-bold text-white">
+                  <p className="text-lg font-display font-bold text-gray-900 dark:text-white">
                     Modern Web
                   </p>
-                  <p className="text-[10px] text-brand-light font-mono uppercase">
+                  <p className="text-[10px] text-gray-500 dark:text-brand-light font-mono uppercase">
                     React / Next.js Integration
                   </p>
                 </div>
@@ -157,11 +157,11 @@ export const Hero: React.FC = () => {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               {/* Frame Border */}
-              <div className="absolute -inset-4 border-2 border-brand-gray/30 rounded-3xl z-0 translate-x-4 translate-y-4" />
+              <div className="absolute -inset-4 border-2 border-gray-200 dark:border-brand-gray/30 rounded-3xl z-0 translate-x-4 translate-y-4" />
 
               {/* Main Image with HeroUI Image for lazy loading and zoom effect */}
-              <div className="relative h-full w-full rounded-3xl overflow-hidden border border-brand-gray/50 shadow-2xl shadow-black/50 bg-brand-gray">
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-40 z-10" />
+              <div className="relative h-full w-full rounded-3xl overflow-hidden border border-gray-300 dark:border-brand-gray/50 shadow-2xl shadow-gray-300/50 dark:shadow-black/50 bg-gray-100 dark:bg-brand-gray">
+                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-brand-dark via-transparent to-transparent opacity-40 z-10" />
                 <Image
                   isZoomed
                   alt="Trần Xuân Hoàn Portrait"
@@ -175,12 +175,12 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-brand-dark/90 backdrop-blur-xl border border-brand-gold/30 p-4 rounded-xl shadow-xl z-20">
+              <div className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-white/90 dark:bg-brand-dark/90 backdrop-blur-xl border border-brand-gold/30 p-4 rounded-xl shadow-xl z-20">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
                   <div>
-                    <p className="text-xs text-brand-light font-mono">STATUS</p>
-                    <p className="text-white font-bold">
+                    <p className="text-xs text-gray-500 dark:text-brand-light font-mono">STATUS</p>
+                    <p className="text-gray-900 dark:text-white font-bold">
                       Available for Projects
                     </p>
                   </div>
