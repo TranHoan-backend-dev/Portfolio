@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-brand-dark text-brand-light;
+    @apply bg-gray-50 text-gray-900 dark:bg-brand-dark dark:text-white;
     overflow-x: hidden;
   }
 }
@@ -13,14 +13,27 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
+
+/* Light Theme Scrollbar */
 ::-webkit-scrollbar-track {
-  background: #0B0C10;
+  background: #F3F4F6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #45A29E;
+  background: #9CA3AF;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
+  background: #6B7280;
+}
+
+/* Dark Theme Scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #45A29E;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
   background: #66FCF1;
 }
 

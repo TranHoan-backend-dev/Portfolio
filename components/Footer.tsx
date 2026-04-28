@@ -9,7 +9,11 @@ import { GithubIcon as Github } from "@/components/icons";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-white dark:bg-brand-dark border-t border-gray-200 dark:border-brand-gray/30 py-12">
+    <footer className="relative bg-white dark:bg-brand-dark py-12">
+      {/* Elegant Top Divider */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-300 dark:via-brand-cyan/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-brand-teal dark:via-brand-cyan/60 to-transparent blur-sm" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
           {/* Logo & Info */}
