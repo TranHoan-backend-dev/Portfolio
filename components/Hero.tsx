@@ -3,9 +3,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@heroui/button";
-import { Image } from "@heroui/image";
 import { Chip } from "@heroui/chip";
 import { ArrowRight, Code, Terminal, Server, Cpu } from "lucide-react";
+import Image from "next/image";
 
 const heroImg = "/image.png";
 
@@ -156,20 +156,14 @@ export const Hero: React.FC = () => {
               className="relative z-10 w-4/5 mx-auto lg:w-3/4 aspect-[3/4]"
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              {/* Frame Border */}
-              <div className="absolute -inset-4 border-2 border-gray-200 dark:border-brand-gray/30 rounded-3xl z-0 translate-x-4 translate-y-4" />
-
-              {/* Main Image with HeroUI Image for lazy loading and zoom effect */}
+              {/* Main Image */}
               <div className="relative h-full w-full rounded-3xl overflow-hidden border border-gray-300 dark:border-brand-gray/50 shadow-2xl shadow-gray-300/50 dark:shadow-black/50 bg-gray-100 dark:bg-brand-gray">
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-brand-dark via-transparent to-transparent opacity-40 z-10" />
                 <Image
-                  isZoomed
+                  fill
+                  priority
                   alt="Trần Xuân Hoàn Portrait"
-                  className="w-full h-full object-cover"
-                  classNames={{
-                    wrapper: "h-full w-full",
-                    img: "h-full w-full",
-                  }}
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   src={heroImg}
                 />
               </div>
