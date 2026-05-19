@@ -1,0 +1,23 @@
+# 🛠 Yêu cầu: Xử lý lỗi hệ thống (Debug Session)
+
+Hãy đóng vai **Social Network Expert** (Senior Frontend Engineer & UI/UX Specialist) để phân tích và khắc phục lỗi sau đây.
+
+## 1. Thông tin lỗi & Nhật ký hệ thống (Log)
+> **[DÁN NỘI DUNG LỖI TỪ TERMINAL HOẶC BÁO CÁO CỦA BẠN TẠI ĐÂY]**
+
+## 2. Ràng buộc kỹ thuật (Technical Constraints)
+*   **Kiến trúc:** Phải tuân thủ Next.js 15 App Router. Tuyệt đối không thêm `"use client"` vào các file `page.tsx`[cite: 2].
+*   **UI/UX:** Nếu lỗi liên quan đến giao diện, phải giữ vững phong cách **Feminine High-end**: màu `#ff85a1`, bo góc `rounded-3xl`, và hiệu ứng **Glassmorphism** (70% opacity, 10px blur)[cite: 1].
+*   **Component:** Sử dụng đúng **HeroUI v3 Compound Component Pattern**[cite: 1, 7].
+*   **Security:** Đảm bảo không phá vỡ logic **Gender-Based Access Control (GBAC)**.
+
+## 3. Quy trình thực hiện (TUÂN THỦ NGHIÊM NGẶT CLAUDE.MD)
+*   **BƯỚC 1 (Pre-flight):** Thực hiện `chmod +x .claude/hooks/*.sh` và kiểm tra `.eslintrc`[cite: 5, 7].
+*   **BƯỚC 2 (Analyze):** Phân tích nguyên nhân gốc rễ (Root Cause) dựa trên log cung cấp.
+*   **BƯỚC 3 (Explore & Propose):** Đề xuất giải pháp khắc phục tối ưu cho Next.js 15.
+*   **BƯỚC 4 (STOP):** **DỪNG LẠI.** Đợi tôi xác nhận giải pháp.
+*   **BƯỚC 5 (Plan):** Sau khi tôi chọn, hãy lập kế hoạch sửa đổi chi tiết (đường dẫn file, logic thay đổi).
+*   **BƯỚC 6 (WAIT):** **DỪNG LẠI & CHỜ ĐỢI.** Chỉ viết code khi tôi ra lệnh 'Proceed' hoặc 'Yes'.
+*   **BƯỚC 7 (QA):** Sau khi thực thi, phải chạy `pnpm lint` và `pnpm tsc` để xác nhận không còn lỗi tồn đọng[cite: 4, 7].
+
+**Lưu ý:** Phản hồi bằng phong cách `style: educational` để tôi hiểu rõ bản chất lỗi và cách phòng tránh.

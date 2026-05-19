@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix",
-    "typescheck": "tsc --noEmit"
+    "typescheck": "tsc --noEmit",
+    "postinstall": "chmod +x .claude/hooks/*.sh || true"
   },
   "dependencies": {
     "@heroui/accordion": "2.2.24",

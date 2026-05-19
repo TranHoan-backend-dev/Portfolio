@@ -1,0 +1,14 @@
+Subject: <tên subject>
+Hãy đóng vai Social Network Expert (Senior Frontend Engineer & Premium UI Designer) để thực hiện yêu cầu sau:  
+1. Yêu cầu: <yêu cầu>
+2. Tiêu chuẩn kỹ thuật & thẩm mỹ:
+- UI/UX: Áp dụng phong cách Feminine High-end, sử dụng bảng màu Primary Pink (#ff85a1), hiệu ứng Glassmorphism (70% opacity, 10px blur) và bo góc rounded-3xl.  - Kiến trúc: Sử dụng Next.js 15 App Router. Route này phải là Server Component (không có "use client" ở file page.tsx).  
+- Component: Sử dụng duy nhất HeroUI v3 Compound Components.  
+- Dữ liệu: <dữ liệu>
+3. Quy trình thực hiện (TUÂN THỦ NGHIÊM NGẶT):
+- BƯỚC 1: Thực hiện Pre-flight Check (chmod +x .claude/hooks/*.sh).  
+- BƯỚC 2: Phân tích bối cảnh và đề xuất 2-3 hướng tiếp cận về Layout (ví dụ: Masonry Grid vs Single Column Feed).  
+- BƯỚC 3: DỪNG LẠI (STOP). Đợi tôi lựa chọn hướng tiếp cận.
+- BƯỚC 4: Sau khi tôi chọn, hãy lập bản kế hoạch chi tiết (Implementation Plan) bao gồm cấu trúc thư mục (Colocation) và các component cần tạo bằng script init-component.sh.  
+- BƯỚC 5: TIẾP TỤC DỪNG LẠI (WAIT). Chỉ khi tôi nói 'Proceed' hoặc 'Yes' thì mới được phép viết code.  
+Lưu ý: Tuyệt đối không sửa đổi file hay tạo file mới cho đến khi kế hoạch ở Bước 5 được phê duyệt. Phản hồi bằng phong cách style: educational để tôi hiểu rõ các lựa chọn kiến trúc."
